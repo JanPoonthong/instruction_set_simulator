@@ -50,7 +50,9 @@
                     if (int.TryParse(key, out int number))
                     {
                         string binary = Convert.ToString(number, 2);
-                        Console.Write(" {0}", binary);
+                        int count = 32 - binary.Length;
+                        Console.Write(" {0}", string.Concat(Enumerable.Repeat("0", count)));
+                        Console.Write("{0}", binary);
                     }
                 }
             }
