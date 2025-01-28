@@ -17,7 +17,9 @@
             { "R2", "010" },
             { "R3", "011" },
             { "R4", "100" },
-            { "R5", "101" }
+            { "R5", "101" },
+            { "R6", "110" },
+            { "R7", "111" },
         };
 
         string[] lines = File.ReadAllLines("instruction_file.txt");
