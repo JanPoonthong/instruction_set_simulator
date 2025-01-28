@@ -21,13 +21,6 @@
         };
 
         string[] lines = File.ReadAllLines("instruction_file.txt");
-        for (int i = 0; i < lines.Length; i++)
-        {
-            if (lines[i].Contains(","))
-            {
-                lines[i] = lines[i].Replace(",", "");
-            }
-        }
 
         Console.WriteLine("PC\tDecode:\t\tEncoded instruction(32-bit):");
         for (int i = 0; i < lines.Length; i++)
@@ -43,7 +36,18 @@
 
                 if (registers.TryGetValue(key, out value))
                 {
+                    int count = 32 - value.Length;
                     Console.Write(" {0}", value);
+                    Console.Write("{0}", string.Concat(Enumerable.Repeat("0", count)));
+                }
+
+                if (key.Contains(","))
+                {
+                    string removeSpecialCharacterKey = key.Replace(",", "");
+                    if (registers.TryGetValue(removeSpecialCharacterKey, out value))
+                    {
+                        Console.Write(" {0}", value);
+                    }
                 }
                 else
                 {
